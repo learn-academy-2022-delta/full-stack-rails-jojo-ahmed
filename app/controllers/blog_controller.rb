@@ -8,6 +8,16 @@ class BlogController < ApplicationController
   def new
   end
   def create
-    @blog=blog.create(title:param[:title], content: params[:content])
+    @blog = Blog.create(form_param)
+    if @blog.valid?
+      redirect_to blogs_path
+    else
+      redirect_to new_blogs_path
+    end
+  end
+  
+  private
+  def blog_params
+    params.require(:blog).permit(:title, :content)
   end
 end
