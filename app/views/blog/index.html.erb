@@ -1,0 +1,7 @@
+<h1> Tv Shows </h1>
+ 
+<ul>
+  <%@blogs.each do |blog| %>
+   <li> <%= link_to blog.title, blog_path(blog) %> </li>
+  <% end %>
+</ul>
